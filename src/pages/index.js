@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { Button } from '@material-tailwind/react'
+
 
 export default function Home() {
 	return (
@@ -12,6 +14,7 @@ export default function Home() {
 
 			<main>
 				<h1 className="text-red-500 text-2xl">Test</h1>
+				<Button>Button</Button>
 			</main>
 		</div>
 	)
