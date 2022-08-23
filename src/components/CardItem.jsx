@@ -14,16 +14,25 @@ export default function CardItem({ item }) {
 				/>
 			</CardHeader>
 			<CardBody className="text-center p-0">
-				<div className="text-md truncate whitespace-nowrap">
-					<b title={item.name}>{item.name}</b>
+				<div
+					title={item.name || 'unknown'}
+					className="text-md truncate whitespace-nowrap"
+				>
+					<b>{item.name || 'unknown'}</b>
 				</div>
-				<div className="text-md truncate whitespace-nowrap">
-					<b title={item.species || 'unknown'}>Species : </b>
-					{item.species}
-				</div>
-				<div className="text-md truncate whitespace-nowrap">
-					<b title={item.type}>Type : </b>
+				<div
+					title={item.species || 'unknown'}
+					className="text-md truncate whitespace-nowrap"
+				>
+					<b>Species : </b>
 					{item.species || 'unknown'}
+				</div>
+				<div
+					title={item.type}
+					className="text-md truncate whitespace-nowrap pl-1"
+				>
+					<b>Type : </b>
+					{item.type || 'unknown'}
 				</div>
 			</CardBody>
 		</Card>
