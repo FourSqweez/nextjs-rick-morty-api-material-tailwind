@@ -3,8 +3,32 @@ import { Card, CardHeader, CardBody } from '@material-tailwind/react'
 import Image from 'next/image'
 
 export default function CardItem({ item }) {
+	console.log(item.status)
+
+	const handleStatus = (status) => {
+		return (
+			<>
+				<p
+					className={`${
+						status === 'Dead'
+							? 'bg-red-400'
+							: status === 'Alive'
+							? 'bg-green-300'
+							: 'bg-yellow-400'
+					} rounded-2xl m-1 p-1.5 w-auto text-center tracking-wide text-black text-xs font-semibold`}
+				>
+					{status}
+				</p>
+			</>
+		)
+	}
 	return (
 		<Card className="w-44 h-72 pb-1 border-4 border-gray-800 hover:border-purple-300 shadow-xl shadow-blue-gray-500 overflow-hidden hover:cursor-pointer hover:scale-110 ease-out duration-300 ">
+			<div className="absolute z-10 rounded-md w-full">
+				<span className="flex w-full justify-end">
+					{handleStatus(item.status)}
+				</span>
+			</div>
 			<CardHeader floated={false} className="rounded-none m-0 w-full h-full">
 				<Image
 					priority="true"
