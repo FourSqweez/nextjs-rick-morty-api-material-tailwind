@@ -3,8 +3,6 @@ import { Card, CardHeader, CardBody } from '@material-tailwind/react'
 import Image from 'next/image'
 
 export default function CardItem({ item }) {
-	console.log(item.status)
-
 	const handleStatus = (status) => {
 		return (
 			<>
