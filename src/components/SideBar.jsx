@@ -7,22 +7,19 @@ import {
 import { Button } from '@material-tailwind/react'
 
 export default function SideBar({ characters }) {
+	console.log(characters.map((item) => item))
 	const [open, setOpen] = useState(0)
 
 	const handleOpen = (value) => {
 		setOpen(open === value ? 0 : value)
 	}
 
-	const unionStatus = [
-		...new Map(
-			characters.map((item) => [JSON.stringify(item.status), item.status])
-		).values(),
-	]
+	// union text in an array 
+	const status = [...new Set(characters.map((item) => item.status))]
 
-	const setStatusToObject = (item) => {
-		return { status: item }
-	}
-	const status = unionStatus.map(setStatusToObject)
+	const species = [...new Set(characters.map((item) => item.species))]
+
+	const genders = [...new Set(characters.map((item) => item.gender))]
 
 	return (
 		<div className="max-w-xs w-full h-full">
@@ -38,21 +35,39 @@ export default function SideBar({ characters }) {
 							{status &&
 								status.map((item) => (
 									<Button
-										key={item.status}
+										key={item}
 										className="w-auto p-2 text-center h-auto rounded-2xl text-gray-600 bg-orange-200"
 									>
-										{item.status}
+										{item}
 									</Button>
 								))}
 						</AccordionBody>
 					</Accordion>
 					<Accordion open={open === 2} onClick={() => handleOpen(2)}>
 						<AccordionHeader>Species</AccordionHeader>
-						<AccordionBody>fff</AccordionBody>
+						<AccordionBody className='flex justify-evenly'>
+							{species.map((specie) => (
+								<Button
+									key={specie}
+									className="w-auto p-2 text-center h-auto rounded-2xl text-gray-600 bg-orange-200"
+								>
+									{specie}
+								</Button>
+							))}
+						</AccordionBody>
 					</Accordion>
 					<Accordion open={open === 3} onClick={() => handleOpen(3)}>
 						<AccordionHeader>Gender</AccordionHeader>
-						<AccordionBody>tt</AccordionBody>
+						<AccordionBody className='flex justify-evenly'>
+							{genders.map((gender) => (
+								<Button
+									key={gender}
+									className="w-auto p-2 text-center h-auto rounded-2xl text-gray-600 bg-orange-200"
+								>
+									{gender}
+								</Button>
+							))}
+						</AccordionBody>
 					</Accordion>
 				</div>
 			</div>
