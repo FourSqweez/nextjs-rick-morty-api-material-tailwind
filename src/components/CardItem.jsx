@@ -43,20 +43,20 @@ export default function CardItem({ item }) {
 					<CardBody className="text-center p-0">
 						<div
 							title={item.name || 'unknown'}
-							className="text-md truncate whitespace-nowrap"
+							className="text-md px-1 truncate whitespace-nowrap"
 						>
 							<b>{item.name || 'unknown'}</b>
 						</div>
 						<div
 							title={item.species || 'unknown'}
-							className="text-md truncate whitespace-nowrap"
+							className="text-md px-1 truncate whitespace-nowrap"
 						>
 							<b>Species : </b>
 							{item.species || 'unknown'}
 						</div>
 						<div
 							title={item.type}
-							className="text-md truncate whitespace-nowrap pl-1"
+							className="text-md px-1 truncate whitespace-nowrap pl-1"
 						>
 							<b>Type : </b>
 							{item.type || 'unknown'}
