@@ -10,6 +10,7 @@ import {
 	MALE,
 	NULL,
 	UNKNOWN,
+	UNKNOWN_GENDER,
 } from '../app/constant'
 
 export default function Cards({ characters }) {
@@ -32,7 +33,7 @@ export default function Cards({ characters }) {
 		return characters.filter((item) => item.status == status)
 	}
 	const getFilterFromGender = (gender) => {
-		return characters.filter((item) => item.gender == gender)
+		return characters.filter((item) => `gender-${item.gender}` == gender)
 	}
 
 	const getFilterFromSpecies = (species) => {
@@ -54,6 +55,9 @@ export default function Cards({ characters }) {
 				setDisplays(getFilterFromGender(filters))
 				return
 			case FEMALE:
+				setDisplays(getFilterFromGender(filters))
+				return
+			case UNKNOWN_GENDER:
 				setDisplays(getFilterFromGender(filters))
 				return
 			case HUMAN:
