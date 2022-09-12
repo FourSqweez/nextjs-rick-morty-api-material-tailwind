@@ -72,7 +72,7 @@ export default function SideBar({ characters }) {
 						<AccordionBody className="flex justify-center gap-3">
 							{genders.map((filterItem) => (
 								<Button
-									onClick={() => handleFilters(filterItem)}
+									onClick={() => handleFilters(`gender-${filterItem}`)}
 									key={filterItem}
 									className="w-auto p-2 text-center h-auto rounded-2xl text-gray-600 bg-orange-200"
 								>
