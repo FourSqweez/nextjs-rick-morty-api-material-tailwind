@@ -31,7 +31,7 @@ export default function SideBar({ characters }) {
 				<div className="">
 					<Accordion open={open === 1} onClick={() => handleOpen(1)}>
 						<AccordionHeader className="text-xl">Status</AccordionHeader>
-						<AccordionBody className="flex justify-evenly">
+						<AccordionBody className="flex justify-center gap-3">
 							{status &&
 								status.map((item) => (
 									<Button
@@ -45,7 +45,7 @@ export default function SideBar({ characters }) {
 					</Accordion>
 					<Accordion open={open === 2} onClick={() => handleOpen(2)}>
 						<AccordionHeader>Species</AccordionHeader>
-						<AccordionBody className='flex justify-evenly'>
+						<AccordionBody className="flex justify-center gap-3">
 							{species.map((specie) => (
 								<Button
 									key={specie}
@@ -58,7 +58,7 @@ export default function SideBar({ characters }) {
 					</Accordion>
 					<Accordion open={open === 3} onClick={() => handleOpen(3)}>
 						<AccordionHeader>Gender</AccordionHeader>
-						<AccordionBody className='flex justify-evenly'>
+						<AccordionBody className="flex justify-center gap-3">
 							{genders.map((gender) => (
 								<Button
 									key={gender}
