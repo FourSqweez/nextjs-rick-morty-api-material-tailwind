@@ -31,7 +31,10 @@ export default function SideBar({ characters }) {
 		<div className="max-w-xs w-full h-full">
 			<div className="w-72 fixed text-center h-auto">
 				<h1 className="text-2xl font-semibold">Filters</h1>
-				<h3 className="text-md font-semibold cursor-pointer underline">
+				<h3
+					onClick={() => setFilters(null)}
+					className="text-md font-semibold cursor-pointer underline"
+				>
 					Clear Filters
 				</h3>
 				<div className="">
