@@ -1,20 +1,26 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {
 	Accordion,
 	AccordionHeader,
 	AccordionBody,
 } from '@material-tailwind/react'
 import { Button } from '@material-tailwind/react'
+import { AppContext } from '../app/contextApi'
 
 export default function SideBar({ characters }) {
-	console.log(characters.map((item) => item))
+	// console.log(characters.map((item) => item))
+	const { setFilters } = useContext(AppContext)
+
 	const [open, setOpen] = useState(0)
 
 	const handleOpen = (value) => {
 		setOpen(open === value ? 0 : value)
 	}
+	const handleFilters = (filter) => {
+		setFilters(filter)
+	}
 
-	// union text in an array 
+	// union text in an array
 	const status = [...new Set(characters.map((item) => item.status))]
 
 	const species = [...new Set(characters.map((item) => item.species))]
@@ -33,12 +39,13 @@ export default function SideBar({ characters }) {
 						<AccordionHeader className="text-xl">Status</AccordionHeader>
 						<AccordionBody className="flex justify-center gap-3">
 							{status &&
-								status.map((item) => (
+								status.map((filterItem) => (
 									<Button
-										key={item}
+										onClick={() => handleFilters(filterItem)}
+										key={filterItem}
 										className="w-auto p-2 text-center h-auto rounded-2xl text-gray-600 bg-orange-200"
 									>
-										{item}
+										{filterItem}
 									</Button>
 								))}
 						</AccordionBody>
@@ -46,12 +53,13 @@ export default function SideBar({ characters }) {
 					<Accordion open={open === 2} onClick={() => handleOpen(2)}>
 						<AccordionHeader>Species</AccordionHeader>
 						<AccordionBody className="flex justify-center gap-3">
-							{species.map((specie) => (
+							{species.map((filterItem) => (
 								<Button
-									key={specie}
+									onClick={() => handleFilters(filterItem)}
+									key={filterItem}
 									className="w-auto p-2 text-center h-auto rounded-2xl text-gray-600 bg-orange-200"
 								>
-									{specie}
+									{filterItem}
 								</Button>
 							))}
 						</AccordionBody>
@@ -59,12 +67,13 @@ export default function SideBar({ characters }) {
 					<Accordion open={open === 3} onClick={() => handleOpen(3)}>
 						<AccordionHeader>Gender</AccordionHeader>
 						<AccordionBody className="flex justify-center gap-3">
-							{genders.map((gender) => (
+							{genders.map((filterItem) => (
 								<Button
-									key={gender}
+									onClick={() => handleFilters(filterItem)}
+									key={filterItem}
 									className="w-auto p-2 text-center h-auto rounded-2xl text-gray-600 bg-orange-200"
 								>
-									{gender}
+									{filterItem}
 								</Button>
 							))}
 						</AccordionBody>
